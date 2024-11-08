@@ -1,7 +1,7 @@
 <template>
     <div class="input-group">
       <label class="range-label">Day Rate</label>
-      <input
+      $<input
         type="number"
         v-model="localValue"
         @input="updateValue"

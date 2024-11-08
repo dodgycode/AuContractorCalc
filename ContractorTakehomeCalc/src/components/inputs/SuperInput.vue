@@ -1,7 +1,7 @@
 <template>
     <div class="input-group">
       <label class="range-label">Superannuation</label>
-      <input
+      $<input
         type="number"
         v-model="localValue"
         @input="updateValue"
