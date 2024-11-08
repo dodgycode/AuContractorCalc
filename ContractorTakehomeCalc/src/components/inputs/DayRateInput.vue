@@ -1,6 +1,6 @@
 <template>
-    <div class="range-container">
-      <label for="dayRate" class="range-label">Day Rate ($):</label>
+    <div class="input-group">
+      <label class="range-label">Day Rate</label>
       <input
         type="number"
         v-model="localValue"
@@ -8,7 +8,9 @@
         id="dayRate"
         min="200"
         max="2000"  
+        class="rate-input"
       />
+      <div class="range-container">
       <input
         type="range"
         v-model="localValue"
@@ -18,6 +20,7 @@
         :step="10"   
       />
     </div>
+  </div>
   </template>
   
   <script>

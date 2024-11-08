@@ -62,78 +62,90 @@ export default {
 </script>
 
 <style>
-/* Container for range inputs */
-.range-container {
-  margin: 2rem 0;
-  padding: 1rem;
+/* Underlined input style */
+.rate-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #42b883; /* Vue green color */
+  color: #fff;
+  padding: 5px 0;
+  width: 100px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  margin-bottom: 1rem;
 }
 
-/* Base styles for range inputs */
+.rate-input:focus {
+  outline: none;
+  border-bottom-color: #3aa876;
+}
+
+/* Range input container */
+.range-container {
+  position: relative;
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+/* Min/Max labels */
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.range-min, .range-max {
+  position: absolute;
+  bottom: -5px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.range-min {
+  left: 0;
+}
+
+.range-max {
+  right: 0;
+}
+
+/* Range input styling */
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
-  height: 8px;
-  margin: 1.5rem 0;
+  height: 4px;
   background: #2a2a2a;
-  border-radius: 4px;
+  border-radius: 2px;
   outline: none;
 }
 
-/* Thumb styles */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #42b883; /* Vue.js green color */
-  border: 2px solid #35495e;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background: #42b883;
-  border: 2px solid #35495e;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s;
 }
 
-/* Hover effects */
 input[type="range"]::-webkit-slider-thumb:hover {
   background: #3aa876;
   transform: scale(1.1);
 }
 
-input[type="range"]::-moz-range-thumb:hover {
-  background: #3aa876;
-  transform: scale(1.1);
-}
-
-/* Track styles */
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background: #2a2a2a;
-  border-radius: 4px;
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #42b883;
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
+  transition: all 0.2s;
 }
-
-input[type="range"]::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  background: #2a2a2a;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Focus styles */
-input[type="range"]:focus {
-  outline: none;
-}
-
 /* Label styles */
 .range-label {
   display: block;

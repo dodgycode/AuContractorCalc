@@ -1,6 +1,6 @@
 <template>
-    <div class="range-container">
-      <label for="daysWorked" class="range-label">Days Worked:</label>
+    <div class="input-group">
+      <label class="range-label">Days Worked</label>
       <input
         type="number"
         v-model="localValue"
@@ -8,7 +8,9 @@
         id="daysWorked"
         min="0"
         max="365"  
+        class="rate-input"
       />
+      <div class="range-container">
       <input
         type="range"
         v-model="localValue"
@@ -18,6 +20,7 @@
         :step="5"   
       />
     </div>
+  </div>
   </template>
   
   <script>

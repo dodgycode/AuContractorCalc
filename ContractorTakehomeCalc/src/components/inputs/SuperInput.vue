@@ -1,6 +1,6 @@
 <template>
-    <div class="range-container">
-      <label for="super" class="range-label">Superannuation ($):</label>
+    <div class="input-group">
+      <label class="range-label">Superannuation</label>
       <input
         type="number"
         v-model="localValue"
@@ -8,7 +8,9 @@
         id="dayRate"
         min="0"
         :max=grossIncome  
+        class="rate-input"
       />
+      <div class="range-container">
       <input
         type="range"
         v-model="localValue"
@@ -17,7 +19,12 @@
         :max=grossIncome  
         :step="100"   
       />
+      <div class="range-labels">
+        <span class="range-min">$0</span>
+        <span class="range-max">${{ formattedGrossIncome }}</span>
+      </div>
     </div>
+  </div>
   </template>
   
   <script>
@@ -42,6 +49,13 @@
         this.localValue = newVal;
       }
     },
+    computed: {
+      formattedGrossIncome() {
+        return this.grossIncome.toLocaleString({
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+    }},
     methods: {
       updateValue() {
         this.$emit('update:modelValue', this.localValue);
