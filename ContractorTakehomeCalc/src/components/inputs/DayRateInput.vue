@@ -6,8 +6,8 @@
         v-model="localValue"
         @input="updateValue"
         id="dayRate"
-        min="200"
-        max="2000"  
+        min="0"
+        max="20000"  
         class="rate-input"
       />
       <div class="range-container">
@@ -16,7 +16,7 @@
         v-model="localValue"
         @input="updateValue"
         :min="200"
-        :max="2000"  
+        :max="1500"  
         :step="10"   
       />
     </div>
@@ -48,8 +48,4 @@
     }
   };
   </script>
-  
-  <style scoped>
-  /* Add any additional styles for spacing, etc. */
-  </style>
   

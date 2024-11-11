@@ -63,8 +63,3 @@
     }
   };
   </script>
-  
-  <style scoped>
-  /* Add any additional styles for spacing, etc. */
-  </style>
-  

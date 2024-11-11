@@ -12,10 +12,8 @@ import { calculateIncomeTax, calculateMedicareLevy } from '/src/utils/taxCalcula
 <template>
     <div>
       <Inputs 
-      v-model:dayRate="dayRate" 
-      v-model:daysWorked="daysWorked" 
-      v-model:superDeduction="superDeduction"
-      :grossIncome="grossIncome"
+      :superDeduction="superDeduction"
+      v-model:grossIncome="grossIncome"
     />
       <!-- 
       <PensionDeductionInput v-model="pensionDeduction" />
@@ -37,16 +35,15 @@ export default {
   },
   data() {
     return {
-      dayRate: 750,
-      daysWorked: 200,
+      grossIncome: 150000,
       superDeduction: 18750,
       expenses: 0
     };
   },
   computed: {
-    grossIncome() {
-        return this.dayRate * this.daysWorked;
-    },
+    // grossIncome() {
+    //     return this.dayRate * this.daysWorked;
+    // },
     incomeTax() {
       return calculateIncomeTax(this.taxableIncome, this.superDeduction);
     },

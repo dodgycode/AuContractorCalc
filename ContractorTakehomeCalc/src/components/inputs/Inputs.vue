@@ -1,38 +1,33 @@
 <template>
     <div class="inputs-container">
-      <DayRateInput :model-value="dayRate" @update:modelValue="updateDayRate" label="Day Rate" />
-      <DaysWorkedInput :model-value="daysWorked" @update:modelValue="updateDaysWorked" label="Days Worked" />
+        <div>
+            <IncomeInput :model-value="grossIncome" @update:modelValue="updateGrossIncome" /> 
+            <Outputs :grossIncome="grossIncome" :incomeTax="incomeTax" :medicareLevy="medicareLevy" :totalTax="totalTax"></Outputs> 
+        </div>
       <SuperInput :model-value="superDeduction" @update:modelValue="updateSuperDeduction" :gross-income="grossIncome" label="Superannuation" />
     </div>
-  </template>
+</template>
   
   <script>
-  import DayRateInput from './DayRateInput.vue';
-  import DaysWorkedInput from './DaysWorkedInput.vue';
+  import IncomeInput from './IncomeInput.vue';
   import SuperInput from './SuperInput.vue';
   
   export default {
     components: {
-      DayRateInput,
-      DaysWorkedInput,
+      IncomeInput,
       SuperInput,
     },
     props: {
-      dayRate: Number,
-      daysWorked: Number,
       superDeduction: Number,
-      grossIncome: Number  // Pass grossIncome down to SuperInput
+      grossIncome: Number 
     },
-    emits: ['update:dayRate', 'update:daysWorked', 'update:superDeduction'], // Emit events for changes
+    emits: ['update:superDeduction', 'update:grossIncome'], // Emit events for changes
     methods: {
-    updateDayRate(value) {
-      this.$emit('update:dayRate', value);
-    },
-    updateDaysWorked(value) {
-      this.$emit('update:daysWorked', value);
-    },
     updateSuperDeduction(value) {
       this.$emit('update:superDeduction', value);
+    },
+    updateGrossIncome(value) {
+      this.$emit('update:grossIncome', value);
     }
   }
   };
