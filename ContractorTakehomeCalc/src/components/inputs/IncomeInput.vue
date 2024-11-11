@@ -1,17 +1,18 @@
 <template>
   <div>
-    <div>
-      <label for="incomeType" class="range-label">Income Type:</label>
-      <select id="incomeType" v-model="incomeType">
-        <option value="calculated">Calculated</option>
-        <option value="manual">Manual</option>
-      </select>
-    </div>
-    <div v-if="incomeType === 'calculated'">
+    <div class="toggle-switch-container">
+    <input type="checkbox" id="incomeTypeToggle" v-model="isCalculated" hidden>
+    <label for="incomeTypeToggle" class="toggle-switch">
+      <span class="toggle-thumb"></span>
+      <span class="toggle-label" :class="{ active: isCalculated }" v-if="isCalculated">Day Rate</span>
+      <span class="toggle-label" :class="{ active: !isCalculated }" v-if="!isCalculated">Gross Income</span>
+    </label>
+  </div>
+    <div v-if="isCalculated">
       <DayRateInput v-model="dayRate" label="Day Rate" />
       <DaysWorkedInput v-model="daysWorked" label="Days Worked" />
     </div>
-    <div v-else-if="incomeType === 'manual'">
+    <div v-else-if="!isCalculated">
       <GrossIncomeInput v-model="localGrossIncome" label="Gross Income" />
     </div>
   </div>
@@ -30,10 +31,10 @@ export default {
   },
   data() {
     return {
-      incomeType: 'calculated',
+      isCalculated: true,
       dayRate: 750,
       daysWorked: 200,
-      localGrossIncome: 0 // For manual input
+      localGrossIncome: 150000 // For manual input
     };
   },
   props: {
@@ -43,19 +44,18 @@ export default {
   computed: {
     grossIncome: {
       get() {
-        if (this.incomeType === 'calculated') {
-          return this.dayRate * this.daysWorked;
-        } else {
-          return this.localGrossIncome;
-        }
+        if (this.isCalculated) {
+          this.localGrossIncome = this.dayRate * this.daysWorked;
+        } 
+
+        return this.localGrossIncome;        
       },
       set(value) {
-        if (this.incomeType === 'manual') {
+        if (!this.isCalculated) {
           this.localGrossIncome = value;
         } else {
-          // You might want to handle how 'calculated' mode reacts to a direct set of grossIncome.
-          // For example, adjust dayRate proportionally:
-          this.dayRate = value / this.daysWorked || 0;
+          // this.daysWorked = 200;
+          // this.dayRate = value / this.daysWorked;
         }
         this.$emit('update:modelValue', value); // Emit after setting local values
       }
@@ -63,17 +63,19 @@ export default {
   },
   watch: {
     dayRate(newDayRate) {
-      if (this.incomeType === 'calculated') {
+      if (this.isCalculated) {
+        this.localGrossIncome = newDayRate * this.daysWorked;
         this.$emit('update:modelValue', this.grossIncome);
       }
     },
     daysWorked(newDaysWorked) {
-      if (this.incomeType === 'calculated') {
+      if (this.isCalculated) {
+        this.localGrossIncome = newDaysWorked * this.dayRate;
         this.$emit('update:modelValue', this.grossIncome);
       }
     },
     localGrossIncome(newVal) { // Watch manual input for changes
-      if (this.incomeType === 'manual') {
+      if (!this.isCalculated) {
         this.$emit('update:modelValue', newVal);
       }
     }

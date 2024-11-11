@@ -12,15 +12,9 @@ import { calculateIncomeTax, calculateMedicareLevy } from '/src/utils/taxCalcula
 <template>
     <div>
       <Inputs 
-      :superDeduction="superDeduction"
       v-model:grossIncome="grossIncome"
-    />
-      <!-- 
-      <PensionDeductionInput v-model="pensionDeduction" />
-  
-      <CorporationTaxOutput :amount="corporationTax" />
-      <DividendTaxOutput :amount="dividendTax" /> -->
-
+      v-model:superDeduction="superDeduction"/>
+    
       <GrossIncomeOutput :grossIncome="grossIncome" />
       <IncomeTaxOutput :incomeTax="incomeTax" />
       <MedicareLevyOutput :medicareLevy="medicareLevy" />
@@ -59,3 +53,9 @@ export default {
   }
 }
 </script>
+
+<style>
+:root {
+  --primary-color: #38ACEC;
+}
+</style>

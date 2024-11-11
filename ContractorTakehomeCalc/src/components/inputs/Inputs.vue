@@ -38,7 +38,7 @@
 .rate-input {
   background: transparent;
   border: none;
-  border-bottom: 2px solid #42b883; /* Vue green color */
+  border-bottom: 2px solid var(--primary-color); /* Vue green color */
   color: #fff;
   padding: 5px 0;
   width: 100px;
@@ -49,7 +49,7 @@
 
 .rate-input:focus {
   outline: none;
-  border-bottom-color: #3aa876;
+  border-bottom-color: var(--primary-color);
 }
 
 /* Range input container */
@@ -97,7 +97,7 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 16px;
   height: 16px;
-  background: #42b883;
+  background: var(--primary-color);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -105,14 +105,14 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: #3aa876;
+  background: var(--primary-color);
   transform: scale(1.1);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: #42b883;
+  background: var(--primary-color);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -122,7 +122,7 @@ input[type="range"]::-moz-range-thumb {
 .range-label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #42b883;
+  color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 500;
 }
