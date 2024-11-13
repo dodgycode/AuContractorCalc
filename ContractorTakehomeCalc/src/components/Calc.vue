@@ -10,16 +10,18 @@ import { calculateIncomeTax, calculateMedicareLevy } from '/src/utils/taxCalcula
 </script>
 
 <template>
-    <div>
+    <section class="black-section">
       <Inputs 
       v-model:grossIncome="grossIncome"
       v-model:superDeduction="superDeduction"/>
-    
+    </section>
+
+    <section class="blue-section">
       <GrossIncomeOutput :grossIncome="grossIncome" />
       <IncomeTaxOutput :incomeTax="incomeTax" />
       <MedicareLevyOutput :medicareLevy="medicareLevy" />
       <TotalTaxOutput :totalTax="totalTax" :grossIncome="grossIncome" />
-    </div>
+    </section>
   </template>
 
 <script>
@@ -35,9 +37,6 @@ export default {
     };
   },
   computed: {
-    // grossIncome() {
-    //     return this.dayRate * this.daysWorked;
-    // },
     incomeTax() {
       return calculateIncomeTax(this.taxableIncome, this.superDeduction);
     },
@@ -57,5 +56,25 @@ export default {
 <style>
 :root {
   --primary-color: #38ACEC;
+}
+section {            
+    width: 100%;            
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 50px;
+    overflow: hidden; /* Ensure no overflow within sections */
+    min-height: 30vh;
+}
+
+.black-section {
+    background-color: #000;
+    color: var(--primary-color);
+    align-items: center;
+    text-align: center;
+}
+
+.blue-section {
+    background-color: var(--primary-color);
+    color: #000;    
 }
 </style>

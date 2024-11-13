@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <fieldset>
+    <legend>Income</legend>
     <div class="toggle-switch-container">
-    <input type="checkbox" id="incomeTypeToggle" v-model="isCalculated" hidden>
-    <label for="incomeTypeToggle" class="toggle-switch">
-      <span class="toggle-thumb"></span>
-      <span class="toggle-label" :class="{ active: isCalculated }" v-if="isCalculated">Day Rate</span>
-      <span class="toggle-label" :class="{ active: !isCalculated }" v-if="!isCalculated">Gross Income</span>
-    </label>
-  </div>
+      <input type="checkbox" id="incomeTypeToggle" v-model="isCalculated" hidden>
+      <label for="incomeTypeToggle" class="toggle-switch">
+        <span class="toggle-thumb"></span>
+        <span class="toggle-label" :class="{ active: isCalculated }" v-if="isCalculated">Day Rate</span>
+        <span class="toggle-label" :class="{ active: !isCalculated }" v-if="!isCalculated">Gross Income</span>
+      </label>
+    </div>
     <div v-if="isCalculated">
       <DayRateInput v-model="dayRate" label="Day Rate" />
       <DaysWorkedInput v-model="daysWorked" label="Days Worked" />
@@ -15,7 +16,7 @@
     <div v-else-if="!isCalculated">
       <GrossIncomeInput v-model="localGrossIncome" label="Gross Income" />
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>

@@ -67,7 +67,7 @@
 }
 
 .toggle-switch:active .toggle-thumb {
-  /* transform: scale(0.95); Slight scale down on active */
+  transform: scale(0.95); 
 }
 
 
@@ -95,8 +95,8 @@ input[type="checkbox"]:checked + .toggle-switch .toggle-thumb {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.8rem; /* Slightly smaller font size */
-  color: white; /* Or a contrasting color */
+  font-size: 0.8rem; 
+  color: white; 
   transition: opacity 0.3s;
 }
 .toggle-label.active {

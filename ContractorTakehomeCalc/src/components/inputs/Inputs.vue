@@ -38,7 +38,7 @@
 .rate-input {
   background: transparent;
   border: none;
-  border-bottom: 2px solid var(--primary-color); /* Vue green color */
+  border-bottom: 2px solid var(--primary-color); 
   color: #fff;
   padding: 5px 0;
   width: 100px;
@@ -125,5 +125,17 @@ input[type="range"]::-moz-range-thumb {
   color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+fieldset {
+  border: 1px solid var(--primary-color); 
+  padding: 10px;
+  margin-bottom: 20px; 
+  border-radius: 5px; 
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 5px; /* Add padding around the legend text */
 }
 </style>
