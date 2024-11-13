@@ -1,6 +1,6 @@
 # ContractorTakehomeCalc
 
-This template should help get you started developing with Vue 3 in Vite.
+Using Vue front end for client side calculations, this app calculates AU tax obligations for different business structures.
 
 ## Recommended IDE Setup
 
