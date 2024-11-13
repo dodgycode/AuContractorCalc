@@ -2,6 +2,8 @@
 
 Using Vue front end for client side calculations, this app calculates AU tax obligations for different business structures.
 
+Try it out here: https://aucontractorcalc.acjcreative.com/
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
